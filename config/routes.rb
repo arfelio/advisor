@@ -1,4 +1,10 @@
 Advisor::Application.routes.draw do
+  root to:'hotels#index'
+
+  #match "/show" => 'hotels#show'
+
+  #match '/create' => "hotels#create"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -11,8 +17,8 @@ Advisor::Application.routes.draw do
   # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
+  resources :hotels, only: [:new,:show], :path => '/'
+#root :to => 'hotels#index'
   # Sample resource route with options:
   #   resources :products do
   #     member do
@@ -48,7 +54,7 @@ Advisor::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+   #root :to => 'hotels#index'
 
   # See how all your routes lay out with "rake routes"
 
