@@ -1,2 +1,49 @@
-<h1>Hotels#create</h1>
-<p>Find me in app/views/hotels/create.html.erb</p>
+<h1>form for Hotel </h1>
+
+<%= form_for @hotel do |f| %>
+<%= render 'errors'  %>
+<p>
+<%= f.label :title %></p>
+<%= f.text_field :title %>
+<br>
+<p>
+<%= f.label :room_description %></p>
+<%= f.text_area :room_description %>
+<br>
+<p>
+<%= f.label :price_for_room %></p>
+<%= f.text_field :price_for_room %>
+<br>
+<p>
+<%= f.label :breakfast_included %></p>
+<%= f.radio_button(:breakfast_included, "yes") %>
+<%= f.label(:breakfast_included, "Yes") %>
+<%= f.radio_button(:breakfast_included, "no") %>
+<%= f.label(:breakfast_included, "No") %>
+
+<br>
+Addresses:
+  <ul>
+    <%= f.fields_for :location_attributes do |location_form| %>
+      <li>
+        <%= location_form.label :country %>
+        <%= location_form.text_field :country %>
+      </li>
+      <li>
+        <%= location_form.label :state %>
+        <%= location_form.text_field :state %>
+      </li>
+      <li>
+        <%= location_form.label :city %>
+        <%= location_form.text_field :city %>
+      </li>
+      <li>
+        <%= location_form.label :street %>
+        <%= location_form.text_field :street %>
+       </li>
+
+    <% end %>
+  </ul>
+<%= f.submit "Submit"%>
+<% end %>
+

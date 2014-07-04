@@ -5,4 +5,12 @@ FactoryGirl.define do
     price_for_room 100
     breakfast_included "yes"
   end
+  factory :location do
+    hotel
+    country "Usa"
+    state "Texas"
+    city "Austin"
+    street "Cows avenue"
+   # association :hotel
+  end
 end

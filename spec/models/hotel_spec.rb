@@ -9,6 +9,7 @@ describe Hotel do
   it { should respond_to(:room_description) }
   it { should respond_to(:breakfast_included) }
   it { should respond_to(:price_for_room) }
+  #it { should respond_to(:country) }
   it { should validate_presence_of(:title) }
   it { expect(subject).to validate_presence_of :room_description }
   it { should_not allow_value(-100).for(:price_for_room) }
@@ -35,3 +36,6 @@ describe Hotel do
     it { should_not be_valid }
   end
 end
+ #let(:unfollowed_post) do
+  #      FactoryGirl.create(:micropost, user: FactoryGirl.create(:user))
+  #    end
