@@ -10,7 +10,7 @@ class HotelsController < ApplicationController
     @hotel = Hotel.new(params[:hotel])
     if @hotel.save
 
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "Success! Hotel created"
       redirect_to @hotel
     else
       render 'new'

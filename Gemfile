@@ -2,10 +2,11 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
 #ruby-gemset=rails3.2.3
-
+gem 'debugger'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem 'rmagick'
+gem 'carrierwave'
 gem 'sqlite3', '1.3.8'
 
 group :development, :test do

@@ -1,7 +1,11 @@
 <h1>form for Hotel </h1>
 
-<%= form_for @hotel do |f| %>
+<%= form_for @hotel, :html => { :multipart => true } do |f| %>
 <%= render 'errors'  %>
+<p>
+	<%= f.label :image %>
+	<%= f.file_field :image %>
+</p>
 <p>
 <%= f.label :title %></p>
 <%= f.text_field :title %>
@@ -44,6 +48,6 @@ Addresses:
 
     <% end %>
   </ul>
-<%= f.submit "Submit"%>
+<%= f.submit "Create new hotel"%>
 <% end %>
 

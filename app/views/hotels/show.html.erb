@@ -1,5 +1,4 @@
-<h1>Hotels#show</h1>
-<p>Find me in app/views/hotels/show.html.erb</p>
+
 <p><%= @hotel.title %></p>
 <p><%= @hotel.room_description %></p>
 <p><%= @hotel.price_for_room %></p>
@@ -8,3 +7,6 @@
 <p><%= @hotel.location.state %></p>
 <p><%= @hotel.location.city %></p>
 <p><%= @hotel.location.street %></p>
+<div>
+	<%= image_tag @hotel.image.thumb.url %>
+</div>
