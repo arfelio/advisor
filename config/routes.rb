@@ -1,4 +1,6 @@
 Advisor::Application.routes.draw do
+  devise_for :users
+
   root to:'hotels#index'
 
   #match "/show" => 'hotels#show'

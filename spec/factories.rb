@@ -16,6 +16,10 @@ FactoryGirl.define do
     street "Cows avenue"
    # association :hotel
   end
-
+  factory :user do
+    email  "example@gmail.com"
+    password  "123456789"
+    password_confirmation "123456789"
+  end
 
 end

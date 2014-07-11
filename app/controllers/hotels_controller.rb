@@ -1,4 +1,6 @@
 class HotelsController < ApplicationController
+  before_filter :authenticate_user!, only: [:create, :new]
+
   def index
   end
 
