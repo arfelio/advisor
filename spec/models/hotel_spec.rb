@@ -34,7 +34,7 @@ describe Hotel do
   end
 
   describe "when price for room is to big" do
-    before { @hotel.price_for_room = 1000 }
+    before { @hotel.price_for_room = 10001 }
    it { should_not be_valid }
   end
 

@@ -6,10 +6,11 @@ class HotelsController < ApplicationController
 
   def show
     @hotel = Hotel.find(params[:id])
+    @rating = Rating.new
   end
 
   def create
-    @hotel = Hotel.new(params[:hotel])
+    @hotel = current_user.hotels.build(params[:hotel])
     if @hotel.save
 
       flash[:success] = "Success! Hotel created"

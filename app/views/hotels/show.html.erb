@@ -10,3 +10,8 @@
 <div>
 	<%= image_tag @hotel.image.thumb.url %>
 </div>
+<% if current_user %>
+<%= render 'rate_form' %>
+<% end %>
+<h4>This hotel have </h4>
+<p><%= @hotel.average_rating %></p><h4> stars </h4>

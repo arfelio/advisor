@@ -1,4 +1,6 @@
 Advisor::Application.routes.draw do
+  resources :ratings
+
   devise_for :users
 
   root to:'hotels#index'

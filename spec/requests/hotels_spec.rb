@@ -1,5 +1,6 @@
 require 'spec_helper'
-
+include Warden::Test::Helpers
+Warden.test_mode!
 describe "Hotels" do
   subject { page }
   describe "Show page" do
@@ -19,10 +20,55 @@ describe "Hotels" do
     it { should have_xpath('//div/img') }
     it { should have_css("img[src$='#{hotel.image.thumb.url}']") }
 
-  end
+    describe "in rating controller" do
+      let(:user) { FactoryGirl.create(:user) }
+      let(:rating) { FactoryGirl.create(:rating) }
+      before do
+        login_as(user, scope: :user)
+        visit hotel_path(hotel)
+      end
+
+      after(:each) { Warden.test_reset! }
+
+      it { should have_content('Rate this hotel') }
+      it { should have_select('rating_rating',:options=>['1 star','2 stars',
+                                              '3 stars','4 stars','5 stars']) }
+
+    describe "it should rate the hotel" do
+      before do
+        select('5 stars', :from => 'rating_rating')
+
+      end
+      it "should create a rating" do
+      expect { click_button "rate" }.to change(Rating, :count).by(1)
+      end
+      describe "after clicking button 'rate'" do
+        before { click_button 'rate' }
+        it { should have_content('Success! you rate this Hotel')}
+       end
+       describe "when you try rate already rated hotel by clicking button
+       'rate' two times" do
+        before { click_button 'rate' }
+        before { click_button 'rate' }
+        it { should have_content('you already rate this gotel')}
+
+        it "should create a rating" do
+        expect { 2.times{click_button "rate"} }.not_to change(Rating, :count)
+       end
+      end
+    end
+
+    end#end of in rating ciontroller
+
+  end#end of show page
 
   describe "New hotel page" do
-    before { visit new_hotel_path }
+    let(:user) { FactoryGirl.create(:user) }
+    before do
+      login_as(user, scope: :user)
+      visit new_hotel_path
+    end
+    after(:each) { Warden.test_reset! }
     let(:submit) { "Create new hotel" }
 
     describe "with invalid information" do

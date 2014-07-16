@@ -6,7 +6,7 @@ FactoryGirl.define do
     price_for_room 100
     breakfast_included "yes"
     image {fixture_file_upload('spec/fixtures/files/image.png', 'image/png')}
-   # File.open(File.join(Rails.root, '/spec/fixtures/files/image.png'))
+   user_id 1
   end
   factory :location do
     hotel
@@ -20,6 +20,11 @@ FactoryGirl.define do
     email  "example@gmail.com"
     password  "123456789"
     password_confirmation "123456789"
+  end
+  factory :rating do
+    rating 5
+    user_id 1
+    hotel_id 1
   end
 
 end
