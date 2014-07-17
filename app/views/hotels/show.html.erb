@@ -12,6 +12,12 @@
 </div>
 <% if current_user %>
 <%= render 'rate_form' %>
+<%= render 'comment_form' %>
 <% end %>
 <h4>This hotel have </h4>
 <p><%= @hotel.average_rating %></p><h4> stars </h4>
+<p>People say about this hotel </p>
+<% @hotel.comments.each do |comment| %>
+<p><%= comment.content %></p>
+<p><%= comment.user.email %></p>
+<% end %>

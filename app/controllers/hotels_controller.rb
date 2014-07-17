@@ -7,6 +7,7 @@ class HotelsController < ApplicationController
   def show
     @hotel = Hotel.find(params[:id])
     @rating = Rating.new
+    @comment = Comment.new
   end
 
   def create

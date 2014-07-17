@@ -11,4 +11,5 @@ class User < ActiveRecord::Base
   has_many :hotels
   has_many :ratings
   has_many :rated_hotels, :through => :ratings, :source => :hotels
+  has_many :comments
 end

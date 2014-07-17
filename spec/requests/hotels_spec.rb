@@ -52,13 +52,48 @@ describe "Hotels" do
         before { click_button 'rate' }
         it { should have_content('you already rate this gotel')}
 
-        it "should create a rating" do
+        it "should not create a rating" do
         expect { 2.times{click_button "rate"} }.not_to change(Rating, :count)
        end
       end
     end
 
     end#end of in rating ciontroller
+  describe "in comments controller" do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:comment) { FactoryGirl.create(:comment) }
+
+    before do
+        login_as(user, scope: :user)
+        visit hotel_path(hotel)
+    end
+
+    after(:each) { Warden.test_reset! }
+
+    it { should have_button('Leave comment') }
+
+    describe "with valid information" do
+
+      before { fill_in "Content", with: "Lorem ipsum" }
+
+    it "should create a comment" do
+      expect { click_button "Leave comment" }.to change(Comment, :count).by(1)
+    end
+    describe "after adding comment" do
+    before { click_button "Leave comment" }
+    it { should have_content('You add a comment') }
+    end
+    end#with valid info
+    describe "with invalid data" do
+      it "should not create a comment" do
+      expect { click_button "Leave comment" }.not_to change(Comment, :count)
+    end
+    describe "after submission" do
+      before { click_button "Leave comment" }
+      it { should have_content(" Comment not added")}
+    end
+    end
+  end#of coment controller
 
   end#end of show page
 

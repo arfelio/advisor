@@ -26,5 +26,9 @@ FactoryGirl.define do
     user_id 1
     hotel_id 1
   end
-
+  factory :comment do
+    content "Lorem Ipsum"
+    user_id 1
+    hotel_id 1
+  end
 end
