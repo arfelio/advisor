@@ -2,6 +2,7 @@ class HotelsController < ApplicationController
   before_filter :authenticate_user!, only: [:create, :new]
 
   def index
+    @hotels = Hotel.all
   end
 
   def show

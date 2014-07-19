@@ -6,7 +6,7 @@ FactoryGirl.define do
     price_for_room 100
     breakfast_included "yes"
     image {fixture_file_upload('spec/fixtures/files/image.png', 'image/png')}
-   user_id 1
+    user_id 1
   end
   factory :location do
     hotel

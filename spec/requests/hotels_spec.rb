@@ -145,4 +145,22 @@ describe "Hotels" do
       end
     end
   end
+
+  describe "index page" do
+
+    before do
+      25.times do
+        FactoryGirl.create(:hotel)
+      end
+      visit hotels_path
+    end
+     after { Hotel.delete_all }
+
+     it "should have a list of hotels" do
+       Hotel.all.each do |hotel|
+         page.should have_content(hotel.title)
+         page.should have_link("More details about this hotel")
+       end
+     end
+  end#of index page
 end
