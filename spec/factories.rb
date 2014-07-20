@@ -14,7 +14,6 @@ FactoryGirl.define do
     state "Texas"
     city "Austin"
     street "Cows avenue"
-   # association :hotel
   end
   factory :user do
     email  "example@gmail.com"

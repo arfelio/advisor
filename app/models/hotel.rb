@@ -1,6 +1,6 @@
 class Hotel < ActiveRecord::Base
-  attr_accessible :room_description, :title, :image, :price_for_room, :breakfast_included,
-                  :location_attributes, :user_id
+  attr_accessible :room_description, :title, :image, :price_for_room,
+                  :breakfast_included, :location_attributes, :user_id
 
   validates :title, presence: true, length:{ maximum:140 }
   validates :room_description, presence: true, length:{ maximum:500 }
@@ -14,10 +14,10 @@ class Hotel < ActiveRecord::Base
   has_many :ratings
   has_many :raters, :through => :ratings, :source => :users
   has_many :comments
+
   accepts_nested_attributes_for :location
+
   mount_uploader :image, ImageUploader
-
-
 
   def average_rating
     ratings = Rating.find_all_by_hotel_id(self.id)

@@ -32,6 +32,8 @@ GEM
     bcrypt (3.1.7)
     bcrypt-ruby (3.1.5)
       bcrypt (>= 3.1.3)
+    bootstrap-will_paginate (0.0.9)
+      will_paginate
     builder (3.0.4)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -73,9 +75,11 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
+    faker (1.2.0)
+      i18n (~> 0.5)
     ffi (1.9.3)
     hike (1.2.3)
-    i18n (0.6.9)
+    i18n (0.6.11)
     journey (1.0.4)
     jquery-rails (3.1.1)
       railties (>= 3.0, < 5.0)
@@ -165,6 +169,7 @@ GEM
     warden (1.2.3)
       rack (>= 1.0)
     websocket (1.0.7)
+    will_paginate (3.0.4)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -172,12 +177,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-will_paginate (= 0.0.9)
   capybara (= 2.1.0)
   carrierwave
   coffee-rails (~> 3.2.1)
   debugger
   devise
   factory_girl_rails (= 4.2.1)
+  faker (= 1.2.0)
   jquery-rails
   pg (= 0.15.1)
   rails (= 3.2.3)
@@ -189,3 +196,4 @@ DEPENDENCIES
   shoulda-matchers
   sqlite3 (= 1.3.8)
   uglifier (>= 1.0.3)
+  will_paginate (= 3.0.4)

@@ -2,7 +2,8 @@ class HotelsController < ApplicationController
   before_filter :authenticate_user!, only: [:create, :new]
 
   def index
-    @hotels = Hotel.all
+    @top_five = Hotel.all.sort_by{ |h| -h.average_rating }.first(5)
+    @hotels = Hotel.paginate(:page => params[:page], :per_page => 5)
   end
 
   def show

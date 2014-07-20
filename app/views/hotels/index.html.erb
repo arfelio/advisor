@@ -1,4 +1,8 @@
-<h1>Hotels#index</h1>
+<h1>Top 5 hotels</h1>
+<% @top_five.each do |top| %>
+<p> <%= top.title %></p>
+<%= link_to "See description", hotel_path(top) %>
+<% end %>
 <p>Find me in app/views/hotels/index.html.erb</p>
 <%= link_to('Log out', destroy_user_session_path, :method => :delete) %>
 <%= link_to('Log in',new_user_session_path) %>
@@ -10,3 +14,4 @@
 <br>
 <%= link_to "More details about this hotel", hotel_path(hotel) %>
 <% end %>
+<span><%= will_paginate @hotels %></span>
