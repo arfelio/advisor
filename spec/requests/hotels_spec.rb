@@ -157,7 +157,7 @@ describe "Hotels" do
      after { Hotel.delete_all }
 
      it "should have a list of hotels" do
-       Hotel.all.each do |hotel|
+       Hotel.page(1).each do |hotel|
          page.should have_content(hotel.title)
          page.should have_link("More details about this hotel")
        end

@@ -9,6 +9,9 @@ gem 'rmagick'
 gem 'carrierwave'
 gem 'sqlite3', '1.3.8'
 gem 'devise'
+gem 'faker', '1.2.0'
+gem 'will_paginate', '3.0.4'
+gem 'bootstrap-will_paginate', '0.0.9'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
