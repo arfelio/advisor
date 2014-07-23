@@ -7,10 +7,10 @@ class RatingsController < ApplicationController
       redirect_to @hotel, :notice =>"you already rate this gotel"
     else
       @rating = current_user.ratings.build(params[:rating])
-        if @rating.save
-          flash[:success] = "Success! you rate this Hotel "
-          redirect_to @hotel
-        end
-     end
+      if @rating.save
+        flash[:success] = "Success! you rate this Hotel "
+        redirect_to @hotel
+      end
+    end
   end
 end

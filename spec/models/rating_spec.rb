@@ -9,8 +9,6 @@ describe Rating do
 
   context "validations" do
     it { should validate_presence_of(:rating) }
-    it { should validate_presence_of(:hotel_id) }
-    it { should validate_presence_of(:user_id) }
     it { should_not allow_value(6).for(:rating) }
   end
 

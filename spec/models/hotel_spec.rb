@@ -33,7 +33,7 @@ describe Hotel do
     end
 
     describe "when room description is too long" do
-      before { @hotel.room_description = "a"*1001 }
+      before { @hotel.room_description = "a"*1501 }
       it { should_not be_valid }
     end
 

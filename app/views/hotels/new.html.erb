@@ -1,53 +1,35 @@
-<h1>form for Hotel </h1>
+<div class="container">
+	<%= link_to "Back", :back %>
+	<p>
+		<h3>
+			Fill the form to add your hotel
+		</h3>
+	</p>
 
-<%= form_for @hotel, :html => { :multipart => true } do |f| %>
-<%= render 'errors'  %>
-<p>
+	<%= form_for @hotel, :html => { :multipart => true } do |f| %>
+  	<%= render 'errors'  %>
 	<%= f.label :image %>
 	<%= f.file_field :image %>
-</p>
-<p>
-<%= f.label :title %></p>
-<%= f.text_field :title %>
-<br>
-<p>
-<%= f.label :room_description %></p>
-<%= f.text_area :room_description %>
-<br>
-<p>
-<%= f.label :price_for_room %></p>
-<%= f.text_field :price_for_room %>
-<br>
-<p>
-<%= f.label :breakfast_included %></p>
-<%= f.radio_button(:breakfast_included, "yes") %>
-<%= f.label(:breakfast_included, "Yes") %>
-<%= f.radio_button(:breakfast_included, "no") %>
-<%= f.label(:breakfast_included, "No") %>
-
-<br>
-Addresses:
-  <ul>
-    <%= f.fields_for :location_attributes do |location_form| %>
-      <li>
-        <%= location_form.label :country %>
-        <%= location_form.text_field :country %>
-      </li>
-      <li>
-        <%= location_form.label :state %>
-        <%= location_form.text_field :state %>
-      </li>
-      <li>
-        <%= location_form.label :city %>
-        <%= location_form.text_field :city %>
-      </li>
-      <li>
-        <%= location_form.label :street %>
-        <%= location_form.text_field :street %>
-       </li>
-
-    <% end %>
-  </ul>
-<%= f.submit "Create new hotel"%>
-<% end %>
-
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.label :room_description %>
+    <%= f.text_area(:room_description, rows: 7, maxlength:1500) %>
+    <%= f.label :price_for_room %>
+    <div class="input-prepend">
+        <span class="add-on">
+          $
+        </span>
+        <%= f.text_field :price_for_room, :class=>"input-mini"%>
+    </div>
+	<div class="breakfast" >
+  		<p>Breakfast_included?</p>
+  		<%= f.label(:breakfast_included, "Yes", :class=>"radio") %>
+  		<%= f.radio_button(:breakfast_included, "yes") %>
+  		<%= f.label(:breakfast_included, "No", :class=>"radio") %>
+  		<%= f.radio_button(:breakfast_included, "no") %>
+	</div>
+ 	<h4>Addresses:</h4>
+ 	<%= render "adresses" , f: f%>
+ 	<%= f.submit "Create new hotel", :class=>"btn btn-large btn-primary"%>
+	<% end %>
+</div>

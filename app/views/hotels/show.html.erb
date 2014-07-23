@@ -1,23 +1,48 @@
+<div class="container">
+	<%= link_to "Back", :back %>
+	<h3><%= @hotel.title %></h3>
+	<p>
+		Price for room
+		<strong>
+			<%= number_to_currency(@hotel.price_for_room) %>
+		</strong>
+	</p>
+	<p>
+		Breakfast included?
+	 	<strong>
+	 		<%= @hotel.breakfast_included %>
+	 	</strong>
+	</p>
+	<p class="incenter">
+		<%= image_tag @hotel.image.thumb.url %>
+	</p>
 
-<p><%= @hotel.title %></p>
-<p><%= @hotel.room_description %></p>
-<p><%= @hotel.price_for_room %></p>
-<p><%= @hotel.breakfast_included %></p>
-<p><%= @hotel.location.country %></p>
-<p><%= @hotel.location.state %></p>
-<p><%= @hotel.location.city %></p>
-<p><%= @hotel.location.street %></p>
-<div>
-	<%= image_tag @hotel.image.thumb.url %>
+	<p><%= @hotel.room_description %></p>
+	<div id="location">
+  		<h5>Location</h5>
+		<p>Country: <%= @hotel.location.country %></p>
+    	<p>State: <%= @hotel.location.state %></p>
+    	<p>City: <%= @hotel.location.city %></p>
+    	<p>Street: <%= @hotel.location.street %></p>
+	</div>
+
+	<% if current_user %>
+ 	<%= render 'rate_form' %>
+ 	<%= render 'comment_form' %>
+	<% end %>
+	<h4>This hotel have rating <%= @hotel.average_rating %> stars </h4>
+	<p>People say about this hotel </p>
+    <div class="well">
+		<% @hotel.comments.each do |comment| %>
+ 		<p>User:
+ 			<strong>
+ 				<%= comment.user.email %>
+ 			</strong>
+ 		<%= time_ago_in_words(comment.created_at) %> ago say:
+ 		</p>
+ 		<div id="comment">
+ 			<%= wrap(comment.content) %></p>
+ 		</div>
+		<% end %>
+	</div>
 </div>
-<% if current_user %>
-<%= render 'rate_form' %>
-<%= render 'comment_form' %>
-<% end %>
-<h4>This hotel have </h4>
-<p><%= @hotel.average_rating %></p><h4> stars </h4>
-<p>People say about this hotel </p>
-<% @hotel.comments.each do |comment| %>
-<p><%= comment.content %></p>
-<p><%= comment.user.email %></p>
-<% end %>

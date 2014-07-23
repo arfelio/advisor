@@ -1,0 +1,12 @@
+<div class="container" >
+	<h1>Top 5 hotels</h1>
+	<%= link_to "Other hotels", hotels_path %>
+	<% @top_five.each do |top| %>
+	<div class="hotels">
+ 		<h4><%= top.title %></h4>
+ 		<p>This hotel have rating <%= top.average_rating %> stars</p>
+		<%= image_tag top.image.thumb.url %>
+		<p><%= link_to "See description", hotel_path(top) %></p>
+	</div>
+	<% end %>
+</div>

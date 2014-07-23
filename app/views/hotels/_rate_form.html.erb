@@ -1,7 +1,9 @@
-<p>Rate this hotel</p>
-<%= form_for @rating do |f| %>
-<%= f.select(:rating, options_for_select([['1 star', 1], ['2 stars', 2],
-["3 stars", 3],['4 stars',4], ['5 stars',5]])) %>
-<%= f.hidden_field :hotel_id, :value => @hotel.id %>
-<%= f.submit 'rate' %>
-<% end %>
+<h4>Rate this hotel</h4>
+<div class="input-append">
+	<%= form_for @rating do |f| %>
+	<%= f.select(:rating, options_for_select([['1 star', 1], ['2 stars', 2],
+	["3 stars", 3], ['4 stars',4], ['5 stars',5]])) %>
+	<%= f.hidden_field :hotel_id, :value => @hotel.id %>
+	<%= f.submit 'Rate', :class=>"btn btn-success" %>
+	<% end %>
+</div>

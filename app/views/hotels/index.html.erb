@@ -1,17 +1,13 @@
-<h1>Top 5 hotels</h1>
-<% @top_five.each do |top| %>
-<p> <%= top.title %></p>
-<%= link_to "See description", hotel_path(top) %>
-<% end %>
-<p>Find me in app/views/hotels/index.html.erb</p>
-<%= link_to('Log out', destroy_user_session_path, :method => :delete) %>
-<%= link_to('Log in',new_user_session_path) %>
-<%= link_to('Sign up', new_user_registration_path ) %>
-<% @hotels.each do |hotel| %>
-<p><%= hotel.title %></p>
-<p><%= hotel.average_rating %></p>
-<%= image_tag hotel.image.thumb.url %>
-<br>
-<%= link_to "More details about this hotel", hotel_path(hotel) %>
-<% end %>
+<div class="container" >
+<%= link_to "Back", :back %>
+	<h3> Hotels</h3>
+	<% @hotels.each do |hotel| %>
+	<div class="hotels">
+		<h4><%= hotel.title %></h4>
+		<p>Rating: <%= hotel.average_rating %> stars</p>
+        <%= image_tag hotel.image.thumb.url %>
+		<p><%= link_to "More details about this hotel", hotel_path(hotel) %></p>
+	</div>
+	<% end %>
 <span><%= will_paginate @hotels %></span>
+</div>

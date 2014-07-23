@@ -1,7 +1,8 @@
+<h4>You can leave your comment about this hotel here </h4>
 <%= form_for @comment do |f| %>
-<p><%= f.label :content %></p>
-<%= f.text_area :content %>
+<%= f.label :content %>
+<%= f.text_area :content, rows:"5" %>
 <%= f.hidden_field :hotel_id, :value => @hotel.id %>
 <br />
-<%= f.submit 'Leave comment'%>
+<%= f.submit 'Leave comment',:class=>"btn btn-primary"%>
 <% end %>

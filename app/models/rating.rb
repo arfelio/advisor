@@ -4,5 +4,5 @@ class Rating < ActiveRecord::Base
   belongs_to :user
   belongs_to :hotel
 
-  validates :hotel_id, :rating, :user_id, presence: true, inclusion:{ :in => 0..5 }
+  validates :rating, presence: true, inclusion:{ :in => 0..5 }
 end
